@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  golang:
+    image: golang:1
+    volumes:
+      - ./go:/go
+    ports:
+      - 8000:8000
+    command: sh -c "go build -v && ./go"
+  node:
+    image: node:latest
+    volumes:
+      - ./node:/node
+    ports:
+      - 3000:3000
+    command: sh -c "cd /node && node app.js"
